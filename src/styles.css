@@ -1,0 +1,85 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #f6f6f6;
+    background-color: #2f2f2f;
+  }
+
+  a:hover {
+    color: #24c8db;
+  }
+
+  input,
+  button {
+    color: #ffffff;
+    background-color: #0f0f0f98;
+  }
+  button:active {
+    background-color: #0f0f0f69;
+  }
+
+  textarea {
+    width: 95%;
+    height: 100vh;
+    font-size: 20px;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    resize: none;
+    outline: none;
+  }
+}
+
+.container {
+  margin: 0;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.left-panel {
+  flex-basis: 50%;
+  background-color: #2f2f2f;
+  color: #ffffff;
+}
+
+.right-panel {
+  flex-basis: 50%;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.date {
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.markdown {
+  background-color: #2f2f2f;
+  text-align: left;
+}
+
+.markdown-today {
+  background-color: #ffffff;
+  text-align: left;
+  color: #000000;
+  height: 100vh;
+}
+
+.upper {
+  position:fixed;
+  right:50px;
+  bottom:50px;
+  transition:1s;
+  opacity:0.7;
+  transform: scale(1.5);
+}
+
+.upper:hover {
+  opacity:1;
+}
