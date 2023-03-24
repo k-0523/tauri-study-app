@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import MarkdownPreview from '@uiw/react-markdown-preview';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
 import "./App.css";
 
 function App() {
@@ -12,7 +14,7 @@ function App() {
 
   useEffect(() => {
     setToday(formatDate(new Date()));
-    setBeforeDay(getBeforeNdays(5));
+    setBeforeDay(getBefore5days(new Date(today)));
 
     fetchContent(today, true);
     fetchContent(beforeDay, false);
@@ -32,7 +34,7 @@ function App() {
     );  }
 
   // yyyy-mm-dd形式の日付を取得
-  const formatDate = (dt: any) => {
+  const formatDate = (dt: Date) => {
     var y = dt.getFullYear();
     var m = ('00' + (dt.getMonth()+1)).slice(-2);
     var d = ('00' + dt.getDate()).slice(-2);
@@ -40,9 +42,8 @@ function App() {
   }
 
   // 数日前のデータを取得する
-  const getBeforeNdays = (n: number) => {
-    var dt = new Date();
-    dt.setDate(dt.getDate() - n);
+  const getBefore5days = (dt: Date) => {
+    dt.setDate(dt.getDate() - 5);
     return formatDate(dt);
  }
 
@@ -64,9 +65,17 @@ function App() {
         </div>
       </div>
       <div className="right-panel">
-        <p className="date">
-          今日（{today}）
-        </p>
+        <DatePicker
+          onChange={selectedDate => {
+            setToday(formatDate(selectedDate));
+            setBeforeDay(getBefore5days(selectedDate));
+          }}
+          customInput={
+            <p className="date">
+              今日（{today}）
+            </p>
+          }
+        />
         <div style={{ paddingLeft: '10px', paddingRight: '20px' }}>
           {
             isPreviewMode ?
