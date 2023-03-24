@@ -15,6 +15,7 @@
 ↓Markdownプレビューモード
 ![](https://user-images.githubusercontent.com/50039010/226815465-737dfe9d-f8f0-4fd1-bfa7-aed268479465.png)
 
+# 自分用メモ
 ## 環境構築
 ### tauri install
 ```cargo install tauri-cli```
